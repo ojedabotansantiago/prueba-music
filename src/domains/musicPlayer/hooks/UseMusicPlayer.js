@@ -9,8 +9,9 @@ const useMusicPlayer = () => {
       togglePlay();
     } else {
       state.audioPlayer.pause();
-      state.audioPlayer = new Audio()
+      state.audioPlayer = new Audio();
       state.audioPlayer.src = `${process.env.REACT_APP_DOMAIN}/${track.url}`;
+      state.currentUrl = `${process.env.REACT_APP_DOMAIN}/${track.url}`;
       state.audioPlayer.play();
       setState({ ...state, currentTrackIndex: index, isPlaying: true });
     }
@@ -44,7 +45,9 @@ const useMusicPlayer = () => {
   return {
     playTrack,
     togglePlay,
+    audioPlayer: state.audioPlayer,
     currentTrackIndex: state.currentTrackIndex,
+    currentUrl: state.currentUrl? state.currentUrl: '',
     currentTrackName:
       state.currentTrackIndex !== null &&
       state.tracks[state.currentTrackIndex].name,
