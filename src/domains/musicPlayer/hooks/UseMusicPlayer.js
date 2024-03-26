@@ -30,7 +30,7 @@ const useMusicPlayer = () => {
     state.currentTrackIndex === 0
       ? (newIndex = state.tracks.length - 1)
       : (newIndex = state.currentTrackIndex - 1);
-    playTrack(newIndex);
+    playTrack(newIndex, state.tracks[newIndex]);
   }
 
   function playNextTrack() {
@@ -38,7 +38,7 @@ const useMusicPlayer = () => {
     state.currentTrackIndex === state.tracks.length - 1
       ? (newIndex = 0)
       : (newIndex = state.currentTrackIndex + 1);
-    playTrack(newIndex);
+    playTrack(newIndex, state.tracks[newIndex]);
   }
 
   return {
