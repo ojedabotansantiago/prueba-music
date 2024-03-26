@@ -1,9 +1,16 @@
 // FetchHttpAdapter.js
-import HttpPort from '../ports/HttpPort.js';
 
-class TracksFetchHttpAdapter extends HttpPort {
+class TracksFetchHttpAdapter {
+  constructor (){}
   async get(url) {
-    const response = await fetch(url);
+    debugger;
+    const response = await fetch(url, {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify()
+    });
     return response.json();
   }
 
