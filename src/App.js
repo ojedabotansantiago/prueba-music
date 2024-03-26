@@ -1,24 +1,38 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { createContext, useState } from "react";
+import { MusicPlayerContext } from "./context/MusicPlayerContext.js";
+
+import TrackList  from "./components/TrackList.js";
+ import PlayerControls from "./components/PlayerControl.js"
+
 
 function App() {
+  const [state, setState] = useState({
+    audioPlayer: new Audio(),
+   /*  tracks: [
+      {
+        name: "Lost Chameleon - Genesis",
+        file: LostChameleon
+      },
+      {
+        name: "The Hipsta - Shaken Soda",
+        file: Rock
+      },
+      {
+        name: "Tobu - Such Fun",
+        file: Tobu
+      }
+    ], */
+    currentTrackIndex: null,
+    isPlaying: false
+  });
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <MusicPlayerContext.Provider value={[state, setState]}>
+      <div className="container">
+        <TrackList />
+        <PlayerControls />
+      </div>
+    </MusicPlayerContext.Provider>
   );
 }
 
