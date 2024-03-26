@@ -1,15 +1,16 @@
 import { useContext } from "react";
 import  {MusicPlayerContext} from "../context/MusicPlayerContext";
-
 const useMusicPlayer = () => {
   const [state, setState] = useContext(MusicPlayerContext);
 
-  function playTrack(index) {
+  function playTrack(index,track) {
+
     if (index === state.currentTrackIndex) {
       togglePlay();
     } else {
       state.audioPlayer.pause();
-      state.audioPlayer = new Audio(state.tracks[index].file);
+      state.audioPlayer = new Audio()
+      state.audioPlayer.src = `${process.env.REACT_APP_DOMAIN}/${track.url}`;
       state.audioPlayer.play();
       setState({ ...state, currentTrackIndex: index, isPlaying: true });
     }

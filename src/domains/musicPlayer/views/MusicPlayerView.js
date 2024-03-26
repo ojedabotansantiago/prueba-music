@@ -20,8 +20,6 @@ function MusicPlayerView() {
     async function fetchData() {
       try {
         console.log(process.env);
-        const url2 = process.env.REACT_API_All_SONGS;
-        debugger;
         const musicList = await trackService.get(
           `${process.env.REACT_APP_ALL}`
         );

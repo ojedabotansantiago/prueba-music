@@ -14,6 +14,12 @@ class TracksFetchHttpAdapter {
     });
     return response.json();
   }
+  async getTruck(url) {
+    const response = await fetch(url, {
+      method: 'GET'
+    });
+    return response.body;
+  }
 
   async post(url, data) {
     const response = await fetch(url, {

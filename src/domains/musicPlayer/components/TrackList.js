@@ -6,12 +6,13 @@ import useMusicPlayer from "../hooks/UseMusicPlayer.js";
 
 function TrackList() {
   const music = useMusicPlayer();
+
   console.log("music: ", music);
   return (
     <>
       {music.trackList.map((track, index) => (
         <div className="box">
-          <button className="button" onClick={() => music.playTrack(index)}>
+          <button className="button" onClick={() => music.playTrack(index, track )}>
             {music.isPlaying && music.currentTrackIndex === index ? (
               <FontAwesomeIcon icon={faPause} />
             ) : (
