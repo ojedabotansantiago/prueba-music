@@ -23,11 +23,11 @@ function MusicPlayerView() {
         const url2 = process.env.REACT_API_All_SONGS;
         debugger;
         const musicList = await trackService.get(
-          `${process.env.REACT_APP_BASE_URL}${process.env.REACT_API_All_SONGS}`
+          `${process.env.REACT_APP_ALL}`
         );
         setState((prevState) => ({
           ...prevState,
-          tracks: musicList,
+          tracks: musicList.sound,
           loading: false,
         }));
       } catch (error) {

@@ -3,6 +3,7 @@
 class TracksFetchHttpAdapter {
   constructor (){}
   async get(url) {
+
     debugger;
     const response = await fetch(url, {
       method: 'GET',
