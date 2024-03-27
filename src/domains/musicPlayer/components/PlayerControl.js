@@ -9,10 +9,10 @@ import {
   faVolumeHigh
 } from "@fortawesome/free-solid-svg-icons";
 
-import UseMusicPlayer from "../hooks/UseMusicPlayer.js";
+import useMusicPlayer from "../hooks/useMusicPlayer.js";
 
 function PlayerControls() {
-  const music = UseMusicPlayer();
+  const music = useMusicPlayer();
   const audioElement = useRef(); // Referencia al elemento de audio
 
   useEffect(() => {

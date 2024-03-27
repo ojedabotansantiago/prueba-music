@@ -2,7 +2,7 @@ import React, { useContext } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlay, faPause } from "@fortawesome/free-solid-svg-icons";
 
-import useMusicPlayer from "../hooks/UseMusicPlayer.js";
+import useMusicPlayer from "../hooks/useMusicPlayer.js";
 
 function TrackList() {
   const music = useMusicPlayer();
