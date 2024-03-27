@@ -11,7 +11,7 @@ function TrackList() {
   return (
     <>
       {music.trackList.map((track, index) => (
-        <div className="box">
+        <div className="box" key={track.id}>
           <button className="button" onClick={() => music.playTrack(index, track )}>
             {music.isPlaying && music.currentTrackIndex === index ? (
               <FontAwesomeIcon icon={faPause} />
