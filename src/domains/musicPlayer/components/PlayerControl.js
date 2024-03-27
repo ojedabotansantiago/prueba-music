@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect, useRef, useContext } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faPause,
@@ -13,7 +13,22 @@ import UseMusicPlayer from "../hooks/UseMusicPlayer.js";
 
 function PlayerControls() {
   const music = UseMusicPlayer();
-  debugger;
+  const audioElement = useRef(); // Referencia al elemento de audio
+
+  useEffect(() => {
+    if(music.currentUrl === '') return;
+    if (music.isPlaying) {
+      audioElement.current.play(); // Reproducir el audio. Función definida en el context.
+    } else {
+      audioElement.current.pause();
+      music.isPlaying = false;  // Pausar el audio. Función definida en el context.
+    }
+  }, [music.currentUrl])
+
+  useEffect(() => {
+    audioElement.current.muted = music.muteStatus;
+  }, [music.muteStatus])
+
   return (
     <>
       <div className="box controls has-background-grey-dark">
@@ -29,7 +44,7 @@ function PlayerControls() {
                 onClick={music.playPreviousTrack}
               />
             </button>
-            <button
+            {/* <button
               className="button has-text-light has-background-grey-dark"
               onClick={music.togglePlay}
             >
@@ -39,7 +54,7 @@ function PlayerControls() {
                 <FontAwesomeIcon icon={faPlay} />
               )}
 
-            </button>
+            </button> */}
             {music.isPlaying ? (
               <span>
                 <button onClick={() => music.toggleMute(true)} ><FontAwesomeIcon icon={faVolumeMute} /></button>
@@ -49,19 +64,24 @@ function PlayerControls() {
             ) : (
               <span></span>
             )}
-
-
-
             <button className="button has-text-light has-background-grey-dark">
               <FontAwesomeIcon
                 icon={faStepForward}
                 onClick={music.playNextTrack}
               />
             </button>
+
           </div>
+
         ) : (<span>selecione una cancion</span>)}
 
-
+          <audio
+            id="audio-player"
+            name="audio-player"
+            src={music.currentUrl}
+            ref={audioElement}
+            controls
+          ></audio>
       </div>
     </>
   );

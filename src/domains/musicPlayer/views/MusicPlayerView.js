@@ -4,7 +4,6 @@ import { MusicPlayerContext } from "../context/MusicPlayerContext.js";
 import TracksFetchHttpAdapter from "../adapters/TracksFetchHttpAdapter.js";
 import TrackList from "../components/TrackList.js";
 import PlayerControls from "../components/PlayerControl.js"
-import ProgressBar from "../components/ProgressBar.js";
 
 function MusicPlayerView() {
   const trackService = new TracksFetchHttpAdapter();
@@ -53,12 +52,9 @@ function MusicPlayerView() {
       <div className="container">
         <TrackList />
         <PlayerControls />
-        <ProgressBar />
       </div>
     </MusicPlayerContext.Provider>
   );
-  
-
 }
 
 export default MusicPlayerView;
