@@ -41,10 +41,14 @@ const useMusicPlayer = () => {
       : (newIndex = state.currentTrackIndex + 1);
     playTrack(newIndex, state.tracks[newIndex]);
   }
-
+  function toggleMute (muteStatus){
+    debugger;
+    state.audioPlayer.muted = muteStatus;
+  }
   return {
     playTrack,
     togglePlay,
+    toggleMute: toggleMute,
     audioPlayer: state.audioPlayer,
     currentTrackIndex: state.currentTrackIndex,
     currentUrl: state.currentUrl? state.currentUrl: '',
