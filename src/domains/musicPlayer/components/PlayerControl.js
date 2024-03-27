@@ -42,8 +42,8 @@ function PlayerControls() {
             </button>
             {music.isPlaying ? (
               <span>
-                <button  onClick={() => music.toggleMute(true)} ><FontAwesomeIcon icon={faVolumeMute} /></button>
-                <button  onClick={() => music.toggleMute(false)}><FontAwesomeIcon icon={faVolumeHigh} /></button>
+                <button onClick={() => music.toggleMute(true)} ><FontAwesomeIcon icon={faVolumeMute} /></button>
+                <button onClick={() => music.toggleMute(false)}><FontAwesomeIcon icon={faVolumeHigh} /></button>
               </span>
 
             ) : (
