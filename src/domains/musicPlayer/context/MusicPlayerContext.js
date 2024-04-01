@@ -5,7 +5,7 @@ export const MusicPlayerContext = createContext();
 
 export const MusicPlayerProvider = ({ children }) => {
    //@description: set initial status
-  const [isActive, setIsActive] = useState(false);
+  const [isActive, setIsActive, loading, error] = useState(false);
   //@description: play song function  
   const play = () => {
     setIsActive(true);
@@ -17,7 +17,7 @@ export const MusicPlayerProvider = ({ children }) => {
 
   // Proporcionando el estado y las funciones a los componentes "hijos"
   return (
-    <MusicPlayerContext.Provider value={{ isActive, play, pause }}>
+    <MusicPlayerContext.Provider value={{ isActive, play, pause, loading , error }}>
       {children}
     </MusicPlayerContext.Provider>
   );

@@ -16,21 +16,27 @@ function MusicPlayerView() {
 
   useEffect(() => {
     async function fetchData() {
+      setState((prevState) => ({
+        ...prevState,
+        loading: true,
+      }));
       try {
         console.log(process.env);
         const musicList = await trackService.get(
           `${process.env.REACT_APP_ALL}`
         );
+        
         setState((prevState) => ({
           ...prevState,
           audioPlayer: audioPlayer,
-          tracks: musicList.sound,
+          tracks: musicList.songs,
           loading: false,
         }));
       } catch (error) {
-        setState((prevState) => ({
+        debugger
+        setState((prevState) => ({          
           ...prevState,
-          error: error.message,
+          error: true,
           loading: false,
         }));
       }
@@ -44,7 +50,7 @@ function MusicPlayerView() {
   }
 
   if (state.error) {
-    return (<div>Error: {state.error}</div>);
+    return (<div>Error: Error api </div>);
   }
 
   return (

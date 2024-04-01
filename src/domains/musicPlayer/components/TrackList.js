@@ -9,22 +9,25 @@ function TrackList() {
 
   console.log("music: ", music);
   const musicList = () => {
-    music.trackList.map((track, index) => (
-      <div className="box" key={track.id}>
-        <button className="button" onClick={() => music.playTrack(index, track)}>
-          {music.isPlaying && music.currentTrackIndex === index ? (
-            <FontAwesomeIcon icon={faPause} />
-          ) : (
-            <FontAwesomeIcon icon={faPlay} />
-          )}
-        </button>
-        <div className="song-title">{track.name}</div>
-      </div>
-    ))
+    
+
   }
   return (
     <>
-      {!music.trackList || music.trackList.length === 0 ? <div>No hay canciones disponibles</div> : musicList}
+      {!music.trackList || music.trackList.length === 0 ? <div>No hay canciones disponibles</div> : 
+          music.trackList.map((track, index) => (
+            <div className="box" key={track.id}>
+              <button className="button" onClick={() => music.playTrack(index, track)}>
+                {music.isPlaying && music.currentTrackIndex === index ? (
+                  <FontAwesomeIcon icon={faPause} />
+                ) : (
+                  <FontAwesomeIcon icon={faPlay} />
+                )}
+              </button>
+              <div className="song-title">{track.name}</div>
+            </div>
+          ))
+      }
     </>
   );
 

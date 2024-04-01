@@ -4,7 +4,7 @@ const useMusicPlayer = () => {
   const [state, setState] = useContext(MusicPlayerContext);
 
   function playTrack(index, track) {
-    state.currentUrl = `${process.env.REACT_APP_DOMAIN}/${track.url}`;
+    state.currentUrl = `${process.env.REACT_APP_DOMAIN}${track.url}`;
     setState({ ...state, currentTrackIndex: index, isPlaying: true });
   }
 
@@ -67,7 +67,9 @@ const useMusicPlayer = () => {
     trackList: state.tracks,
     isPlaying: state.isPlaying,
     playPreviousTrack,
-    playNextTrack
+    playNextTrack,
+    loading:  state.loading,
+    error:  state.error
   };
 };
 
