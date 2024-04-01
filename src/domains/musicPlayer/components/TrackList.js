@@ -8,22 +8,26 @@ function TrackList() {
   const music = useMusicPlayer();
 
   console.log("music: ", music);
+  const musicList = () => {
+    music.trackList.map((track, index) => (
+      <div className="box" key={track.id}>
+        <button className="button" onClick={() => music.playTrack(index, track)}>
+          {music.isPlaying && music.currentTrackIndex === index ? (
+            <FontAwesomeIcon icon={faPause} />
+          ) : (
+            <FontAwesomeIcon icon={faPlay} />
+          )}
+        </button>
+        <div className="song-title">{track.name}</div>
+      </div>
+    ))
+  }
   return (
     <>
-      {music.trackList.map((track, index) => (
-        <div className="box" key={track.id}>
-          <button className="button" onClick={() => music.playTrack(index, track )}>
-            {music.isPlaying && music.currentTrackIndex === index ? (
-              <FontAwesomeIcon icon={faPause} />
-            ) : (
-              <FontAwesomeIcon icon={faPlay} />
-            )}
-          </button>
-          <div className="song-title">{track.name}</div>
-        </div>
-      ))}
+      {!music.trackList || music.trackList.length === 0 ? <div>No hay canciones disponibles</div> : musicList}
     </>
   );
+
 }
 
 export default TrackList;

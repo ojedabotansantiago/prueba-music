@@ -1,4 +1,4 @@
-import React, { createContext, useState, useEffect } from "react";
+import React, { createContext, useState, useEffect, useRef } from "react";
 import { MusicPlayerContext } from "../context/MusicPlayerContext.js";
 
 import TracksFetchHttpAdapter from "../adapters/TracksFetchHttpAdapter.js";
@@ -7,9 +7,8 @@ import PlayerControls from "../components/PlayerControl.js"
 
 function MusicPlayerView() {
   const trackService = new TracksFetchHttpAdapter();
-
+  const audioPlayer = useRef(new Audio());
   const [state, setState] = useState({
-    audioPlayer: new Audio(),
     tracks: [],
     currentTrackIndex: null,
     isPlaying: false
@@ -24,6 +23,7 @@ function MusicPlayerView() {
         );
         setState((prevState) => ({
           ...prevState,
+          audioPlayer: audioPlayer,
           tracks: musicList.sound,
           loading: false,
         }));
