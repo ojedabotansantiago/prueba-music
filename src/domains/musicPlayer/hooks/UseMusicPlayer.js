@@ -1,5 +1,7 @@
 import { useContext } from "react";
 import { MusicPlayerContext } from "../context/MusicPlayerContext";
+import PropTypes from 'prop-types';
+
 const useMusicPlayer = () => {
   const [state, setState] = useContext(MusicPlayerContext);
 
@@ -58,9 +60,9 @@ const useMusicPlayer = () => {
     togglePlay,
     toggleMute: toggleMute,
     muteStatus: state.muteStatus,
-    audioPlayer: state.audioPlayer,
-    currentTrackIndex: state.currentTrackIndex,
-    currentUrl: state.currentUrl ? state.currentUrl : '',
+    audioPlayer: Audio,
+    currentTrackIndex: Number,
+    currentUrl: String,
     currentTrackName:
       state.currentTrackIndex !== null &&
       state.tracks[state.currentTrackIndex].name,
@@ -72,5 +74,20 @@ const useMusicPlayer = () => {
     error:  state.error
   };
 };
-
+useMusicPlayer.propTypes  = {
+  playTrack: PropTypes.String,
+  togglePlay: PropTypes.Boolean,
+  toggleMute: PropTypes.Boolean,
+  muteStatus: PropTypes.Boolean,
+  audioPlayer: PropTypes.Boolean,
+  currentTrackIndex: PropTypes.Number,
+  currentUrl: PropTypes.String,
+  currentTrackName: PropTypes.String || PropTypes.null,
+  trackList: PropTypes.Array,
+  isPlaying: PropTypes.Boolean,
+  playPreviousTrack: PropTypes.Function,
+  playNextTrack: PropTypes.Function,
+  loading:  PropTypes.Boolean,
+  error:  PropTypes.String
+}
 export default useMusicPlayer;

@@ -1,4 +1,4 @@
-import React, { createContext, useState, useEffect, useRef } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { MusicPlayerContext } from "../context/MusicPlayerContext.js";
 
 import TracksFetchHttpAdapter from "../adapters/TracksFetchHttpAdapter.js";

@@ -1,4 +1,5 @@
 import { createContext, useState } from "react";
+import PropTypes from 'prop-types';
 
 // Creando el context
 export const MusicPlayerContext = createContext();
@@ -22,3 +23,8 @@ export const MusicPlayerProvider = ({ children }) => {
     </MusicPlayerContext.Provider>
   );
 };
+MusicPlayerProvider.propTypes ={
+  isActive: Boolean,
+  loading: Boolean,
+  error: String
+}
